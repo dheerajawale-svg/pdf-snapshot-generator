@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Font } from '@react-pdf/renderer';
 
 // Register fonts for PDF generation
@@ -13,13 +13,12 @@ Font.register({
   ]
 });
 
-const FontsLoader: React.FC = () => {
-  useEffect(() => {
-    // Font preloading could be done here if needed
-    console.log('Fonts loaded for PDF generation');
-  }, []);
+// Changed from functional component to simple logging during import
+console.log('Fonts loaded for PDF generation');
 
-  return null; // This component doesn't render anything
+const FontsLoader = () => {
+  // This component doesn't need to use useEffect since font registration happens during import
+  return null;
 };
 
 export default FontsLoader;
