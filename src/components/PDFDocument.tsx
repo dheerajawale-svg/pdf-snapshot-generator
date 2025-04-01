@@ -101,6 +101,13 @@ const styles = StyleSheet.create({
     height: 10,
     border: '1px solid #000',
     marginRight: 5,
+  },
+  checkedCheckbox: {
+    width: 10,
+    height: 10,
+    border: '1px solid #000',
+    backgroundColor: '#000',
+    marginRight: 5,
   }
 });
 
@@ -165,7 +172,7 @@ const PDFDocument = ({ reportData }) => (
                 <Text style={[styles.tableCell, styles.col20]}></Text>
                 <Text style={[styles.tableCell, styles.col10]}>{flight.partyBilling}</Text>
                 <View style={[styles.col10, { alignItems: 'center' }]}>
-                  <View style={styles.checkbox}></View>
+                  <View style={styles.checkedCheckbox}></View>
                 </View>
               </View>
               <View style={styles.tableSubRow}>
