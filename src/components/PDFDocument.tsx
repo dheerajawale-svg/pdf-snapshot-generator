@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   Document, 
@@ -101,14 +102,14 @@ const styles = StyleSheet.create({
     height: 10,
     border: '1px solid #000',
     marginRight: 5,
-    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   checkmark: {
-    position: 'absolute',
-    top: -1,
-    left: 1,
-    fontSize: 7,
+    fontSize: 8,
     fontWeight: 'bold',
+    color: '#000000',
   }
 });
 
@@ -163,32 +164,30 @@ const PDFDocument = ({ reportData }) => (
           </View>
           
           {/* Table Rows */}
-          {reportData.flights.map((flight, index) => (
-            <React.Fragment key={index}>
-              <View style={styles.tableRow}>
-                <Text style={[styles.tableCell, styles.col10]}>{flight.flightNumber}</Text>
-                <Text style={[styles.tableCell, styles.col15]}>{flight.ataDate} {flight.ataTime}</Text>
-                <Text style={[styles.tableCell, styles.col15]}>{flight.atdDate} {flight.atdTime}</Text>
-                <Text style={[styles.tableCell, styles.col20]}></Text>
-                <Text style={[styles.tableCell, styles.col20]}></Text>
-                <Text style={[styles.tableCell, styles.col10]}>{flight.partyBilling}</Text>
-                <View style={[styles.col10, { alignItems: 'center' }]}>
-                  <View style={styles.checkbox}>
-                    <Text style={styles.checkmark}>✓</Text>
-                  </View>
+          {reportData.flights.map((flight, index) => [
+            <View key={`row-${index}`} style={styles.tableRow}>
+              <Text style={[styles.tableCell, styles.col10]}>{flight.flightNumber}</Text>
+              <Text style={[styles.tableCell, styles.col15]}>{flight.ataDate} {flight.ataTime}</Text>
+              <Text style={[styles.tableCell, styles.col15]}>{flight.atdDate} {flight.atdTime}</Text>
+              <Text style={[styles.tableCell, styles.col20]}></Text>
+              <Text style={[styles.tableCell, styles.col20]}></Text>
+              <Text style={[styles.tableCell, styles.col10]}>{flight.partyBilling}</Text>
+              <View style={[styles.col10, { alignItems: 'center' }]}>
+                <View style={styles.checkbox}>
+                  <Text style={styles.checkmark}>✓</Text>
                 </View>
               </View>
-              <View style={styles.tableSubRow}>
-                <Text style={[styles.tableCell, styles.col10]}>{flight.rc}</Text>
-                <Text style={[styles.tableCell, styles.col15]}>{flight.aircraftNumber}</Text>
-                <Text style={[styles.tableCell, styles.col15]}></Text>
-                <Text style={[styles.tableCell, styles.col20]}>{flight.rc2Date} {flight.rc2Time}</Text>
-                <Text style={[styles.tableCell, styles.col20]}>{flight.rc3Date} {flight.rc3Time}</Text>
-                <Text style={[styles.tableCell, styles.col10]}></Text>
-                <Text style={[styles.tableCell, styles.col10]}></Text>
-              </View>
-            </React.Fragment>
-          ))}
+            </View>,
+            <View key={`subrow-${index}`} style={styles.tableSubRow}>
+              <Text style={[styles.tableCell, styles.col10]}>{flight.rc}</Text>
+              <Text style={[styles.tableCell, styles.col15]}>{flight.aircraftNumber}</Text>
+              <Text style={[styles.tableCell, styles.col15]}></Text>
+              <Text style={[styles.tableCell, styles.col20]}>{flight.rc2Date} {flight.rc2Time}</Text>
+              <Text style={[styles.tableCell, styles.col20]}>{flight.rc3Date} {flight.rc3Time}</Text>
+              <Text style={[styles.tableCell, styles.col10]}></Text>
+              <Text style={[styles.tableCell, styles.col10]}></Text>
+            </View>
+          ])}
         </View>
       </View>
     </Page>
